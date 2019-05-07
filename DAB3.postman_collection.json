@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "879f3311-1810-4951-b35e-cc3d027ba03f",
+		"name": "DAB3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Circle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"huh\",\n\t\"usersId\":[\"5cd1716f7fa8d63d4857d4fa\",\"id2\"]\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/circle/create",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"circle",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all circles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/circle",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"circle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Block User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userBlockingId\":\"5cd1297663451f36046231fb\",\n\t\"userToBlockId\":\"5cd131bc0ff1ba3810792fcf\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/user/block",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"user",
+						"block"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Human Name\",\n\t\"age\":23,\n\t\"Gender\": \"Male\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/user/create",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post with Text",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"TypeOfDetails\":\"DetailText\",\n\t\"Detail\": '{\"Text\" : \"This is my post\"}',\n\t\"AuthorId\": \"5cd1c8d8864f8c2b4c43172f\",\n\t\"CircleId\" : \"\",\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/post/createPost",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"post",
+						"createPost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post with Image",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"TypeOfDetails\":\"DetailText\",\n\t\"Detail\":\"{'PathToImage' : 'SomeUrl in circle'}\",\n\t\"AuthorId\": \"5cd1b0dfa119bb1a0c154a0c\",\n\t\"CircleId\" : \"5cd1b13ca119bb1a0c154a11\",\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/post/createPost",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"post",
+						"createPost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"PostId\":\"5cd19fc448f1b131fc740634\",\n\t\"Comment\":\n\t\t{\n\t\t\t\"AuthorId\" : \"5cd1297663451f36046231fb\",\n\t\t\t\"Text\" : \"This is my comment\"\n\t\t}\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/post/CreateComment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"post",
+						"CreateComment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Wall",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ViewerId\":\"5cd1b0cca119bb1a0c154a0b\",\n\t\"OwnerId\": \"5cd1b0dfa119bb1a0c154a0c\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/user/Wall",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"user",
+						"Wall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Feed",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"UserId\":\"5cd1c8d8864f8c2b4c43172f\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/user/Feed",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"user",
+						"Feed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Follow User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userFollowing\":\"5cd1297663451f36046231fb\",\n\t\"userToFollow\":\"5cd131bc0ff1ba3810792fcf\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44382/api/user/follow",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"user",
+						"follow"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
