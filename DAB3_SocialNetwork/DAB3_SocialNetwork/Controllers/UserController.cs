@@ -54,6 +54,9 @@ namespace DAB3_SocialNetwork.Controllers
                 post.AuthorId == owner.Id && 
                 viewer.MemberOf.Contains(post.CircleId))
                 .Limit(10).ToList();
+
+            //Limit of comments maybe?
+
             return Ok(posts);
         }
 
