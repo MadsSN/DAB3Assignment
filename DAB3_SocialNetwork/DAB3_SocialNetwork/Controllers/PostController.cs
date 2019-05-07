@@ -6,6 +6,7 @@ using DAB3_SocialNetwork.Models;
 using DAB3_SocialNetwork.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
@@ -17,6 +18,7 @@ namespace DAB3_SocialNetwork.Controllers
     {
         private IMongoCollection<User> _users;
         private IMongoCollection<Post> _posts;
+        private IMongoCollection<Circle> _circle;
 
 
         public PostController(IConfiguration config)
@@ -25,13 +27,22 @@ namespace DAB3_SocialNetwork.Controllers
             var database = client.GetDatabase("StoreDb");
             _users = database.GetCollection<User>("Users");
             _posts = database.GetCollection<Post>("Posts");
+            _circle = database.GetCollection<Circle>("Circles");
         }
 
         
         [HttpGet]
         public ActionResult<List<Post>> Get()
         {
-            return _posts.Find(x => true).ToList();
+            try
+            {
+                return _posts.Find(x => true).ToList();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         
@@ -46,6 +57,14 @@ namespace DAB3_SocialNetwork.Controllers
                 return BadRequest("Invalid author ID");
             }
             post.AuthorName = user.Name;
+
+            //Check if circle exist
+            var circle = _circle.Find(c => c.Id == post.CircleId);
+            if (post.CircleId!= "" && circle == null)
+            {
+                return BadRequest("Invalid circleId");
+            }
+
 
             _posts.InsertOne(post);
             return Ok(post);
@@ -64,10 +83,16 @@ namespace DAB3_SocialNetwork.Controllers
 
             request.Comment.AuthorName = user.Name;
 
-            //Add comment to set
-            var updateBlocks = Builders<Post>.Update.AddToSet(post => post.Comments, request.Comment);
-            _posts.FindOneAndUpdate(post => post.Id == request.PostId, updateBlocks);
-
+            try
+            {
+                //Add comment to set
+                var updateBlocks = Builders<Post>.Update.AddToSet(post => post.Comments, request.Comment);
+                _posts.FindOneAndUpdate(post => post.Id == request.PostId, updateBlocks);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Post does not exist");
+            }
             return Ok(request.Comment);
         }
 

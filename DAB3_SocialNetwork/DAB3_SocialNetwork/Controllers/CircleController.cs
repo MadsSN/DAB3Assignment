@@ -51,6 +51,8 @@ namespace DAB3_SocialNetwork.Controllers
         {
             List<string> userToRemoveFromList = new List<string>();
             //Add to each user
+            //Insert to get token
+            _circles.InsertOne(circle);
 
             foreach (var userId in circle.UsersId)
             {
@@ -58,7 +60,7 @@ namespace DAB3_SocialNetwork.Controllers
                 try
                 {
                     var filter = Builders<User>.Filter.Eq(user=>user.Id,userId);
-                    var update = Builders<User>.Update.AddToSet(user=>user.MemberOf, circle.Name);
+                    var update = Builders<User>.Update.AddToSet(user=>user.MemberOf, circle.Id);
                     _users.FindOneAndUpdate(user=>user.Id == userId, update);
                 }
                 catch (Exception e)
@@ -74,8 +76,8 @@ namespace DAB3_SocialNetwork.Controllers
                 circle.UsersId.Remove(useId);
             }
 
-            //Insert
-            _circles.InsertOne(circle);
+            //Refresh and update
+            _circles.FindOneAndReplace(c => c.Id == circle.Id, circle);
 
             return Ok(circle);
         }

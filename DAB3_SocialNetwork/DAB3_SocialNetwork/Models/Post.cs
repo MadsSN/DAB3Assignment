@@ -13,6 +13,7 @@ namespace DAB3_SocialNetwork.Models
         {
             Comments = new List<Comment>();
             CreatedAt = DateTime.Now;
+            CircleId = "";
         }
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -33,8 +34,8 @@ namespace DAB3_SocialNetwork.Models
         [BsonElement("CreatedAt")]
         public DateTime CreatedAt { get; set; }
 
-        [BsonElement("CircleName")]
-        public string Blocks { get; set; }
+        [BsonElement("CircleId")]
+        public string CircleId { get; set; }
 
         [BsonElement("Comments")]
         public List<Comment> Comments { get; set; }

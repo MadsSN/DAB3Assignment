@@ -16,12 +16,14 @@ namespace DAB3_SocialNetwork.Controllers
     {
 
         private IMongoCollection<User> _users;
+        private IMongoCollection<Post> _posts;
 
         public UserController(IConfiguration config)
         {
             var client = new MongoClient(config.GetConnectionString("StoreDb"));
             var database = client.GetDatabase("StoreDb");
             _users = database.GetCollection<User>("Users");
+            _posts = database.GetCollection<Post>("Posts");
         }
 
         // GET api/values
@@ -32,12 +34,27 @@ namespace DAB3_SocialNetwork.Controllers
         }
 
         [HttpGet]
-        [Route("[action]/{id}")]
-        public ActionResult<User> Feed(string id)
+        [Route("[action]")]
+        public ActionResult<List<Post>> Feed([FromBody] FeedRequest request)
         {
-            //var userReturned = _userService.FindFirst(user=>user.Id == id);
-           // return userReturned;
-           return Ok();
+            var owner = _users.Find(userFilter => userFilter.Id == request.OwnerId).FirstOrDefault();
+            var viewer = _users.Find(userFilter => userFilter.Id == request.ViewerId).FirstOrDefault();
+            if (viewer == null)
+            {
+                return BadRequest("Invalid Viewer ID");
+            }
+            if(owner == null)
+            {
+                return BadRequest("Invalid owner ID");
+            }
+            //Post where owner is author. 
+            //CircleId == "" if public or circleName is contained in MemberOf of viewer
+            //Limit to first 10
+            var posts = _posts.Find(post =>
+                post.AuthorId == owner.Id && 
+                viewer.MemberOf.Contains(post.CircleId))
+                .Limit(10).ToList();
+            return Ok(posts);
         }
 
         [HttpPut]

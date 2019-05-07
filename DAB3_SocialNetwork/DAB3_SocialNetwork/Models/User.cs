@@ -12,6 +12,9 @@ namespace DAB3_SocialNetwork.Models
         public User()
         {
             MemberOf = new List<string>();
+            //All users a member of public. 
+            MemberOf.Add("");
+
             BlockedBy = new List<string>();
             Blocks = new List<string>();
             Follows = new List<string>();
