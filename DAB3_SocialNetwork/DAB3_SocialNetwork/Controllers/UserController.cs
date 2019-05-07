@@ -29,15 +29,15 @@ namespace DAB3_SocialNetwork.Controllers
             {
                 Age = 1
             });
-            return _userService.Get();
+            return _userService.Find();
         }
 
         [HttpGet]
         [Route("[action]/{id}")]
         public ActionResult<User> Feed(string id)
         {
-            var user = _userService.Get(id);
-            return user;
+            var userReturned = _userService.FindFirst(user=>user.Id == id);
+            return userReturned;
         }
 
 
