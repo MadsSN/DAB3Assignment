@@ -9,6 +9,11 @@ namespace DAB3_SocialNetwork.Models
 {
     public class Circle
     {
+
+        public Circle()
+        {
+            UsersId = new List<string>();
+        }
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

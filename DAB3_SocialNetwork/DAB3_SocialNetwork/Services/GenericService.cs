@@ -46,11 +46,15 @@ namespace DAB3_SocialNetwork.Services
             public virtual List<TEntity> Find(
                 Expression<Func<TEntity, bool>> filter = null)
             {
+                if (filter == null)
+                {
+                    return _entity.Find(x => true).ToList();
+                }
                 return _entity.Find(filter).ToList();
             }
 
             public virtual TEntity FindFirst(
-                Expression<Func<TEntity, bool>> filter = null)
+                Expression<Func<TEntity, bool>> filter)
             {
                 return _entity.Find(filter).FirstOrDefault();
             }
@@ -61,7 +65,7 @@ namespace DAB3_SocialNetwork.Services
                 return entity;
             }
 
-            public void Update(TEntity postIn, Expression<Func<TEntity, bool>> filter = null)
+            public void Update(TEntity postIn, Expression<Func<TEntity, bool>> filter)
             {
                 _entity.ReplaceOne(filter, postIn);
             }

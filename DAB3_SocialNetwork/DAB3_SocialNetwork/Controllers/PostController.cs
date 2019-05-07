@@ -6,6 +6,8 @@ using DAB3_SocialNetwork.Models;
 using DAB3_SocialNetwork.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
 
 namespace DAB3_SocialNetwork.Controllers
 {
@@ -13,48 +15,63 @@ namespace DAB3_SocialNetwork.Controllers
     [ApiController]
     public class PostController : ControllerBase
     {
+        private IMongoCollection<User> _users;
+        private IMongoCollection<Post> _posts;
 
-        private readonly PostService _postService;
 
-        public PostController(PostService postService)
+        public PostController(IConfiguration config)
         {
-            _postService = postService;
+            var client = new MongoClient(config.GetConnectionString("StoreDb"));
+            var database = client.GetDatabase("StoreDb");
+            _users = database.GetCollection<User>("Users");
+            _posts = database.GetCollection<Post>("Posts");
         }
 
-        // GET: api/Post
+        
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<List<Post>> Get()
         {
-            _postService.Create(new Post()
-            {
-                Author = "Hej"
-            });
-            return new string[] { "value1", "value2" };
+            return _posts.Find(x => true).ToList();
         }
 
-        // GET: api/Post/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Post
+        
+        [Route("[action]")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<Post> CreatePost([FromBody] Post post)
         {
+            //Currently details are sort of fake.. 
+            var user = _users.Find(x => x.Id == post.AuthorId).FirstOrDefault();
+            if (user == null)
+            {
+                return BadRequest("Invalid author ID");
+            }
+            post.AuthorName = user.Name;
+
+            _posts.InsertOne(post);
+            return Ok(post);
         }
 
-        // PUT: api/Post/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Route("[action]")]
+        [HttpPost]
+        public ActionResult<Comment> CreateComment([FromBody] CommentRequest request)
         {
+            var user = _users.Find(x => x.Id == request.Comment.AuthorId).FirstOrDefault();
+
+            if (user == null)
+            {
+                return BadRequest("Invalid author ID");
+            }
+
+            request.Comment.AuthorName = user.Name;
+
+            //Add comment to set
+            var updateBlocks = Builders<Post>.Update.AddToSet(post => post.Comments, request.Comment);
+            _posts.FindOneAndUpdate(post => post.Id == request.PostId, updateBlocks);
+
+            return Ok(request.Comment);
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+
+
     }
 }

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using DAB3_SocialNetwork.Models;
 using DAB3_SocialNetwork.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
 
 namespace DAB3_SocialNetwork.Controllers
 {
@@ -12,58 +14,60 @@ namespace DAB3_SocialNetwork.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserService _userService;
-        private readonly PostService _postService;
 
-        public UserController(UserService userService, PostService postService)
+        private IMongoCollection<User> _users;
+
+        public UserController(IConfiguration config)
         {
-            _userService = userService;
-            _postService = postService;
+            var client = new MongoClient(config.GetConnectionString("StoreDb"));
+            var database = client.GetDatabase("StoreDb");
+            _users = database.GetCollection<User>("Users");
         }
 
         // GET api/values
         [HttpGet]
         public ActionResult<List<User>> Get()
         {
-            _userService.Create(new User()
-            {
-                Age = 1
-            });
-            return _userService.Find();
+            return _users.Find(user=>true).ToList();
         }
 
         [HttpGet]
         [Route("[action]/{id}")]
         public ActionResult<User> Feed(string id)
         {
-            var userReturned = _userService.FindFirst(user=>user.Id == id);
-            return userReturned;
+            //var userReturned = _userService.FindFirst(user=>user.Id == id);
+           // return userReturned;
+           return Ok();
         }
 
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpPut]
+        [Route("[action]")]
+        public ActionResult<User> Block([FromBody] BlockRequest request)
         {
-            return "value";
+            try
+            {
+                //The own user
+                var updateBlocks = Builders<User>.Update.AddToSet(user => user.Blocks, request.userToBlockId);
+                _users.FindOneAndUpdate(user => user.Id == request.userBlockingId, updateBlocks);
+
+                //The one to block
+                var updateBlocked = Builders<User>.Update.AddToSet(user => user.BlockedBy, request.userBlockingId);
+                _users.FindOneAndUpdate(user => user.Id == request.userToBlockId, updateBlocked);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"No user with given id to block/blocking {e.Message}");
+            }
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("[action]")]
+        public ActionResult<User> Create([FromBody] User user)
         {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            _users.InsertOne(user);
+            return Ok(user);
         }
     }
 }

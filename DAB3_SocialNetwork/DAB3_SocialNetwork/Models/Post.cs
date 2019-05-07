@@ -19,13 +19,16 @@ namespace DAB3_SocialNetwork.Models
         public string Id { get; set; }
 
         [BsonElement("TypeOfDetails")]
-        public string Type { get; set; }
+        public string TypeOfDetails { get; set; }
 
         [BsonElement("Detail")]
-        public Detail Detail { get; set; }
+        public string Detail { get; set; }
 
-        [BsonElement("Author")]
-        public string Author { get; set; }
+        [BsonElement("AuthorId")]
+        public string AuthorId { get; set; }
+
+        [BsonElement("AuthorName")]
+        public string AuthorName { get; set; }
 
         [BsonElement("CreatedAt")]
         public DateTime CreatedAt { get; set; }

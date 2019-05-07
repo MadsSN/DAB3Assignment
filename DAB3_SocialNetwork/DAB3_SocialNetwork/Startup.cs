@@ -29,7 +29,7 @@ namespace DAB3_SocialNetwork
 
             services.AddScoped<UserService>();
             services.AddScoped<PostService>();
-
+            services.AddScoped<CircleService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

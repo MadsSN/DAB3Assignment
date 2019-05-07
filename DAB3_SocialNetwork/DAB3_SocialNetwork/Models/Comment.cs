@@ -12,8 +12,11 @@ namespace DAB3_SocialNetwork.Models
         {
             CreatedAt = DateTime.Now;
         }
-        [BsonElement("UserId")]
-        public string UserId { get; set; }
+        [BsonElement("AuthorId")]
+        public string AuthorId { get; set; }
+
+        [BsonElement("AuthorName")]
+        public string AuthorName { get; set; }
 
         [BsonElement("Text")]
         public string Text { get; set; }

@@ -6,7 +6,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace DAB3_SocialNetwork.Models
 {
-    public class DetailText
+    public class DetailText : Detail
     {
         [BsonElement("Text")]
         public string Text { get; set; }
