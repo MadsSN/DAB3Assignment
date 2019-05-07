@@ -9,6 +9,14 @@ namespace DAB3_SocialNetwork.Models
 {
     public class User
     {
+        public User()
+        {
+            MemberOf = new List<string>();
+            BlockedBy = new List<string>();
+            Blocks = new List<string>();
+            Follows = new List<string>();
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

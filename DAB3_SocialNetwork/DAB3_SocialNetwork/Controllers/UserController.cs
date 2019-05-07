@@ -13,18 +13,33 @@ namespace DAB3_SocialNetwork.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
+        private readonly PostService _postService;
 
-        public UserController(UserService userService)
+        public UserController(UserService userService, PostService postService)
         {
             _userService = userService;
+            _postService = postService;
         }
 
         // GET api/values
         [HttpGet]
         public ActionResult<List<User>> Get()
         {
+            _userService.Create(new User()
+            {
+                Age = 1
+            });
             return _userService.Get();
         }
+
+        [HttpGet]
+        [Route("[action]/{id}")]
+        public ActionResult<User> Feed(string id)
+        {
+            var user = _userService.Get(id);
+            return user;
+        }
+
 
         // GET api/values/5
         [HttpGet("{id}")]

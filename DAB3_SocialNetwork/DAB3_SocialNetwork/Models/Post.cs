@@ -9,11 +9,16 @@ namespace DAB3_SocialNetwork.Models
 {
     public class Post
     {
+        public Post()
+        {
+            Comments = new List<Comment>();
+            CreatedAt = DateTime.Now;
+        }
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        [BsonElement("Type")]
+        [BsonElement("TypeOfDetails")]
         public string Type { get; set; }
 
         [BsonElement("Details")]
@@ -30,8 +35,5 @@ namespace DAB3_SocialNetwork.Models
 
         [BsonElement("Comments")]
         public List<Comment> Comments { get; set; }
-
-        [BsonElement("Follows")]
-        public List<string> Follows { get; set; }
     }
 }

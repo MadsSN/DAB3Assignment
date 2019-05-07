@@ -6,19 +6,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace DAB3_SocialNetwork.Models
 {
-    public class Comment
+    public class DetailsText
     {
-        public Comment()
-        {
-            CreatedAt = DateTime.Now;
-        }
-        [BsonElement("UserId")]
-        public string UserId { get; set; }
-
         [BsonElement("Text")]
         public string Text { get; set; }
-
-        [BsonElement("CreatedAt")]
-        public DateTime CreatedAt { get; set; }
     }
 }

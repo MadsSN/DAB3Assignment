@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAB3_SocialNetwork.Models;
+using DAB3_SocialNetwork.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +13,22 @@ namespace DAB3_SocialNetwork.Controllers
     [ApiController]
     public class PostController : ControllerBase
     {
+
+        private readonly PostService _postService;
+
+        public PostController(PostService postService)
+        {
+            _postService = postService;
+        }
+
         // GET: api/Post
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            _postService.Create(new Post()
+            {
+                Author = "Hej"
+            });
             return new string[] { "value1", "value2" };
         }
 

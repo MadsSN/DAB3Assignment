@@ -7,5 +7,6 @@ namespace DAB3_SocialNetwork.Models
 {
     public class Details
     {
+
     }
 }
