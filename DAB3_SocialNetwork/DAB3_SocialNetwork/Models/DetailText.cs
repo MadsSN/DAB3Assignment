@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace DAB3_SocialNetwork.Models
 {
-    public class Details
+    public class DetailText
     {
-
+        [BsonElement("Text")]
+        public string Text { get; set; }
     }
 }

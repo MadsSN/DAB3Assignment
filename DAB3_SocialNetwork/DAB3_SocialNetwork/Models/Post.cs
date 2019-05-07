@@ -21,8 +21,8 @@ namespace DAB3_SocialNetwork.Models
         [BsonElement("TypeOfDetails")]
         public string Type { get; set; }
 
-        [BsonElement("Details")]
-        public Details Details { get; set; }
+        [BsonElement("Detail")]
+        public Detail Detail { get; set; }
 
         [BsonElement("Author")]
         public string Author { get; set; }
