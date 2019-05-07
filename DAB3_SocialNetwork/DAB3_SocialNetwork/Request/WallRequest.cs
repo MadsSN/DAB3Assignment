@@ -6,8 +6,9 @@ using DAB3_SocialNetwork.Models;
 
 namespace DAB3_SocialNetwork
 {
-    public class FeedRequest
+    public class WallRequest
     {
-        public string UserId { get; set; }
+        public string ViewerId { get; set; }
+        public string OwnerId { get; set; }
     }
 }
