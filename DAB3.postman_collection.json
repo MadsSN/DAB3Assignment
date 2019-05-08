@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\":\"huh\",\n\t\"usersId\":[\"5cd1716f7fa8d63d4857d4fa\",\"id2\"]\n}"
+					"raw": "{\n\t\"name\":\"New Circle\",\n\t\"usersId\":[\"5cd1b0cca119bb1a0c154a0b\",\"5cd1b0dfa119bb1a0c154a0c\"]\n}"
 				},
 				"url": {
 					"raw": "https://localhost:44382/api/circle/create",
@@ -103,7 +103,16 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": ""
+					"raw": "https://localhost:44382/api/user",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"user"
+					]
 				}
 			},
 			"response": []
@@ -122,7 +131,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\":\"Human Name\",\n\t\"age\":23,\n\t\"Gender\": \"Male\"\n}"
+					"raw": "{\n\t\"name\":\"Michael new\",\n\t\"age\":23,\n\t\"Gender\": \"Male\"\n}"
 				},
 				"url": {
 					"raw": "https://localhost:44382/api/user/create",
@@ -214,7 +223,16 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": ""
+					"raw": "https://localhost:44382/api/post",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"post"
+					]
 				}
 			},
 			"response": []
