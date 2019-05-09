@@ -23,7 +23,7 @@ namespace DAB3_SocialNetwork.Models
         public string TypeOfDetails { get; set; }
 
         [BsonElement("Detail")]
-        public string Detail { get; set; }
+        public Detail Detail { get; set; }
 
         [BsonElement("AuthorId")]
         public string AuthorId { get; set; }

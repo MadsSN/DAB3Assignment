@@ -6,7 +6,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace DAB3_SocialNetwork.Models
 {
-    public class DetailImage
+    public class DetailImage : Detail
     {
         [BsonElement("PathToImage")]
         public string PathToImage { get; set; }
