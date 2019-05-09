@@ -4,6 +4,8 @@ Beskrivelse af end points:
 Alle endpoints er den pågældende basis URL tilføjet "/api/"
 F.eks. https://localhost:44382/api/.
 
+Der anbefaldes på det kraftigste at importere det vedlagte Postman collection, hvor alle nævnte request er klar til at blive brugt. 
+
 User end points:
 URL | Parameter | Response
 user | | All user objekter
