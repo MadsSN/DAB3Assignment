@@ -20,9 +20,9 @@ namespace DAB3_SocialNetwork.Controllers
         private IMongoCollection<Circle> _circle;
 
 
-        public PostController(IConfiguration config)
+        public PostController()
         {
-            var client = new MongoClient(config.GetConnectionString("StoreDb"));
+            var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("StoreDb");
             _users = database.GetCollection<User>("Users");
             _posts = database.GetCollection<Post>("Posts");

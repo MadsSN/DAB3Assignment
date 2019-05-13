@@ -17,9 +17,9 @@ namespace DAB3_SocialNetwork.Controllers
         private IMongoCollection<User> _users;
         private IMongoCollection<Post> _posts;
 
-        public UserController(IConfiguration config)
+        public UserController()
         {
-            var client = new MongoClient(config.GetConnectionString("StoreDb"));
+            var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("StoreDb");
             _users = database.GetCollection<User>("Users");
             _posts = database.GetCollection<Post>("Posts");

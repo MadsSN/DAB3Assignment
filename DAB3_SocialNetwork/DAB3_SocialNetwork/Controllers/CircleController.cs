@@ -21,9 +21,9 @@ namespace DAB3_SocialNetwork.Controllers
         private readonly IMongoCollection<Circle> _circles;
         private readonly IMongoCollection<User> _users;
 
-        public CircleController(IConfiguration config)
+        public CircleController()
         {
-            var client = new MongoClient(config.GetConnectionString("StoreDb"));
+            var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("StoreDb");
             _circles = database.GetCollection<Circle>("Circles");
             _users = database.GetCollection<User>("Users");
@@ -70,9 +70,9 @@ namespace DAB3_SocialNetwork.Controllers
 
             //Remove invalid users from collection. Another approach could be to deny all changes if all users doesn't exist. 
             //Then it need to find all first, and then update them. 
-            foreach (var useId in userToRemoveFromList)
+            foreach (var userId in userToRemoveFromList)
             {
-                circle.UsersId.Remove(useId);
+                circle.UsersId.Remove(userId);
             }
 
             //Refresh and update
