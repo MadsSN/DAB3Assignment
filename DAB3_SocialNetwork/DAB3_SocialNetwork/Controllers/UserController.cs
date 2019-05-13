@@ -46,8 +46,16 @@ namespace DAB3_SocialNetwork.Controllers
             {
                 return BadRequest("Invalid owner ID");
             }
+
+            //Validate that viewer is not blocked by owner
+            if (viewer.BlockedBy.Contains(owner.Id))
+            {
+                return BadRequest("Viewer is blocked by owner");
+            }
+
             //Post where owner is author. 
             //CircleId == "" if public or circleName is contained in MemberOf of viewer
+            
             //Limit to first 10
             var posts = _posts.Find(post =>
                 post.AuthorId == owner.Id && 
@@ -72,14 +80,16 @@ namespace DAB3_SocialNetwork.Controllers
             {
                 return BadRequest("Invalid Viewer ID");
             }
-            //Post where owner is author. 
-            //circleName is contained in MemberOf of viewer - And is not public. 
+            //Post where owner is author or
+            //circleName is contained in MemberOf of viewer - And is not public.  or
             //Author is followed and the circle is public
+            //And user is not blocked by 
             //Limit to first 10
             var posts = _posts.Find(post =>
-                    post.AuthorId == user.Id ||
+                    (post.AuthorId == user.Id ||
                     (user.MemberOf.Contains(post.CircleId) && post.CircleId != "") ||
-                    (user.Follows.Contains(post.AuthorId) && post.CircleId == "")
+                    (user.Follows.Contains(post.AuthorId) && post.CircleId == "")) &&
+                    !user.BlockedBy.Contains(post.AuthorId)
                     )
                 .SortByDescending(post=>post.Id).Limit(10).ToList();
             
