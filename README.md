@@ -1,5 +1,4 @@
 # The Social Network - Gruppe 38
----
 
 ## Prerequisites
 1. Installer MongoDB ([Download her](https://docs.mongodb.com/manual/administration/install-community/ "Download her"))
@@ -14,7 +13,7 @@ Der opfordres igen til, at du benytter Postman og den vedlagte collection, som n
 
 1. Åbn solution i Visual Studio
 2. Tryk CTRL+F5 for at afvikle solution
----
+
 ## Se alle brugere
 ### URL
 https://localhost:44382/api/user
@@ -23,7 +22,7 @@ Ingen.
 ### Respons
 Alle brugere.
 
----
+
 ## Følg bruger
 ### URL
 https://localhost:44382/api/user/follow
@@ -37,7 +36,7 @@ https://localhost:44382/api/user/follow
 ### Respons
 Ingen.
 
----
+
 ## Blokér bruger
 ### URL
 https://localhost:44382/api/user/block
@@ -51,7 +50,7 @@ https://localhost:44382/api/user/block
 ### Respons
 Ingen.
 
----
+
 ## Se anden brugers væg
 ### URL
 https://localhost:44382/api/user/wall
@@ -66,7 +65,7 @@ https://localhost:44382/api/user/wall
 De første 10 posts der matcher kriterierne fra opgavebeskrivelsen.
 Sorteret med nyeste først.
 
----
+
 ## Se eget feed
 ### URL
 https://localhost:44382/api/user/feed
@@ -80,7 +79,7 @@ https://localhost:44382/api/user/feed
 De første 10 posts der matcher kriterierne fra opgavebeskrivelsen.
 Sorteret med nyeste først.
 
----
+
 ## Se alle circles
 ### URL
 https://localhost:44382/api/circle
@@ -89,7 +88,7 @@ Ingen.
 ### Respons
 Alle circles.
 
----
+
 ## Opret circle
 ### URL
 https://localhost:44382/api/circle/create
@@ -106,7 +105,7 @@ https://localhost:44382/api/circle/create
 ### Respons
 Den oprettede circle.
 
----
+
 ## Se alle posts
 ### URL
 https://localhost:44382/api/post
@@ -115,7 +114,7 @@ Ingen.
 ### Respons
 Alle posts.
 
----
+
 ## Opret post
 ### URL
 https://localhost:44382/api/post/createpost
@@ -133,7 +132,7 @@ https://localhost:44382/api/post/createpost
 ### Respons
 Den oprettede post.
 
----
+
 ## Opret comment på post
 ### URL
 https://localhost:44382/api/post/comment
@@ -149,5 +148,3 @@ https://localhost:44382/api/post/comment
 ```
 ### Respons
 Den oprettede comment.
-
----
