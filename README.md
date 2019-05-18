@@ -5,14 +5,14 @@
 2. Installer Postman ([Download her](https://www.getpostman.com/ "Download her"))
 3. Importer den vedlagte DAB3.postman_collection.json i Postman
 
-Ved at installere postman og importere den nævnte collection, så har du alle de endpoints som beskrives nedenfor opsat og klar til brug.
+Ved at installere postman og importere den nævnte collection, så har du alle de endpoints som beskrives nedenfor opsat og klar til brug. 
+**OBS**: Det kan være nødvendigt i Postman at slå SSL Certificate verification fra (OFF). Det gøres under File -> Settings -> General.
 
 ## Usage
-Alle endpoints har samme basis URL, hvor selve portnummeret i URLen dog afhænger af din maskine. F.eks. kan den være https://localhost:44382/api/, hvor 44382 er det, som afhænger af din egen maskine.
-Der opfordres igen til, at du benytter Postman og den vedlagte collection, som nævnt under prerequisites.
-
 1. Åbn solution i Visual Studio
 2. Tryk CTRL+F5 for at afvikle solution
+
+Alle URL's i den vedlagte Postman collection antager, at din solution kører på port 44382, hvorfor basis URL'en for samtlige forespørgsler er https://localhost:44382/api/. Det er dog muligt, at dit system har valgt en anden port, hvorfor du selv skal udskifte den i samtlige Postman requests. Du kan se portnummeret i browserens adresselinie når du afvikler Visual Studio løsningen.
 
 ## Se alle brugere
 ### URL
