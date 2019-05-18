@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "879f3311-1810-4951-b35e-cc3d027ba03f",
+		"_postman_id": "bb5771cc-75d8-459b-a47b-f526e73d41bb",
 		"name": "DAB3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -42,10 +42,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "https://localhost:44382/api/circle",
 					"protocol": "https",
@@ -98,10 +94,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "https://localhost:44382/api/user",
 					"protocol": "https",
@@ -163,7 +155,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"TypeOfDetails\":\"DetailText\",\n\t\"Detail\": '{\"Text\" : \"This is my post\"}',\n\t\"AuthorId\": \"5cd1c8d8864f8c2b4c43172f\",\n\t\"CircleId\" : \"\",\n}"
+					"raw": "{\n\t\"TypeOfDetails\":\"DetailText\",\n\t\"Detail\": {\"Text\" : \"This is my post\"},\n\t\"AuthorId\": \"5cdfc78513490f128cf2cd1a\",\n\t\"CircleId\" : \"\",\n}"
 				},
 				"url": {
 					"raw": "https://localhost:44382/api/post/createPost",
@@ -195,7 +187,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"TypeOfDetails\":\"DetailImage\",\n\t\"Detail\": {'PathToImage' : 'SomeUrl in circle'},\n\t\"AuthorId\": \"5cd1b0dfa119bb1a0c154a0c\",\n\t\"CircleId\" : \"5cd1b13ca119bb1a0c154a11\",\n}"
+					"raw": "{\n\t\"TypeOfDetails\":\"DetailImage\",\n\t\"Detail\": {'PathToImage' : 'SomeUrl in circle'},\n\t\"AuthorId\": \"5cdfc78513490f128cf2cd1a\",\n\t\"CircleId\" : \"5cdfc78513490f128cf2cd1c\",\n}"
 				},
 				"url": {
 					"raw": "https://localhost:44382/api/post/createPost",
@@ -218,10 +210,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "https://localhost:44382/api/post",
 					"protocol": "https",
@@ -251,7 +239,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"PostId\":\"5cd19fc448f1b131fc740634\",\n\t\"Comment\":\n\t\t{\n\t\t\t\"AuthorId\" : \"5cd1297663451f36046231fb\",\n\t\t\t\"Text\" : \"This is my comment\"\n\t\t}\n}"
+					"raw": "{\n\t\"PostId\":\"5cd19fc448f1b131fc740634\",\n\t\"Comment\":\n\t\t{\n\t\t\t\"AuthorId\" : \"5cdfc78413490f128cf2cd19\",\n\t\t\t\"Text\" : \"This is my comment\"\n\t\t}\n}"
 				},
 				"url": {
 					"raw": "https://localhost:44382/api/post/CreateComment",
@@ -286,7 +274,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"ViewerId\":\"5cd1b0cca119bb1a0c154a0b\",\n\t\"OwnerId\": \"5cd1b0dfa119bb1a0c154a0c\"\n}"
+					"raw": "{\n\t\"ViewerId\":\"5cdfc78413490f128cf2cd19\",\n\t\"OwnerId\": \"5cdfc78513490f128cf2cd1b\"\n}"
 				},
 				"url": {
 					"raw": "https://localhost:44382/api/user/Wall",
@@ -321,7 +309,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"UserId\":\"5cd1c8d8864f8c2b4c43172f\"\n}"
+					"raw": "{\n\t\"UserId\":\"5cdfc78513490f128cf2cd1b\"\n}"
 				},
 				"url": {
 					"raw": "https://localhost:44382/api/user/Feed",
@@ -353,7 +341,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userFollowing\":\"5cd1297663451f36046231fb\",\n\t\"userToFollow\":\"5cd131bc0ff1ba3810792fcf\"\n}"
+					"raw": "{\n\t\"userFollowing\":\"5cdfc78513490f128cf2cd1b\",\n\t\"userToFollow\":\"5cdfc78413490f128cf2cd19\"\n}"
 				},
 				"url": {
 					"raw": "https://localhost:44382/api/user/follow",
