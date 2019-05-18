@@ -1,4 +1,4 @@
-# The Social Network - Gruppe 38
+# The Social Network - Gruppe 30
 
 ## Prerequisites
 1. Installer MongoDB ([Download her](https://docs.mongodb.com/manual/administration/install-community/ "Download her"))
