@@ -128,14 +128,29 @@ Ingen.
 Alle posts.
 
 
-## Opret post
+## Opret tekst post
 ### URL
 https://localhost:44382/api/post/createpost
 ### Parametre
 ```json
 { 
     "Detail": {
-        "Text" : "Tekst",
+        "Text" : "Tekst"
+    }, 
+    "AuthorId": "Id af brugeren der opretter posten", 
+    "CircleId" : "Id af cirklen posten skal oprettes i (Efterlad blank for en public post)" 
+}
+```
+### Respons
+Den oprettede post.
+
+## Opret image post
+### URL
+https://localhost:44382/api/post/createpost
+### Parametre
+```json
+{ 
+    "Detail": {
         "PathToImage": "Url"
     }, 
     "AuthorId": "Id af brugeren der opretter posten", 
