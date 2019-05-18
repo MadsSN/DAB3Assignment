@@ -22,6 +22,19 @@ Ingen.
 ### Respons
 Alle brugere.
 
+## Opret bruger
+### URL
+https://localhost:44382/api/user/create
+### Parametre
+```json
+{
+	"name":"Navn på bruger",
+	"age": 23,
+	"Gender": "Male/Female"
+}
+```
+### Respons
+Den oprettede bruger.
 
 ## Følg bruger
 ### URL
@@ -135,7 +148,7 @@ Den oprettede post.
 
 ## Opret comment på post
 ### URL
-https://localhost:44382/api/post/comment
+https://localhost:44382/api/post/createcomment
 ### Parametre
 ```json
 { 
